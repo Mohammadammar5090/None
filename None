@@ -1,0 +1,24 @@
+def puzzle_solver1(k, s, u):
+    for i in list(u):
+        s.append(i)
+        u.pop()
+        if k == 1:
+            if test1(s):
+                if len(s) == 7:
+                    return "solution for first puzzle found =",s
+                else:
+                    return "solution for first puzzle found =",s
+
+        else:
+            puzzle_solver1(k - 1, s, u)
+        s.remove(i)
+        u.add(i)
+
+def test1(s):
+    #  test pot + pan = bib
+    map = dict(zip(list('abinopt'), s))
+    return (map['p'] + map['p'] - map['b']) * 100 + (map['o'] + map['a'] - map['i']) * 10 + (
+                map['t'] + map['n'] - map['b'] == 0)
+
+print(puzzle_solver1(7, [], set(list(range(1,10)))))
+
